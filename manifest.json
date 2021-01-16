@@ -12,7 +12,7 @@
         "default_popup": "popup.html"
     },
     "web_accessible_resources": [
-        "modal-iframe.html"
+        "modal-iframe.html", "logo128.png"
     ],
     "permissions":[
         "contextMenus", 
@@ -22,8 +22,10 @@
         ],
     "content_scripts": [
         {
-            "matches": ["https://docs.google.com/presentation/*"],
+            "matches": ["http://motherfuckingwebsite.com/*"],
             "js": ["content.js"],
+            "css": ["main.css"],
+            "images": ["icon128.png"],
             "all_frames": true
         }
     ],
