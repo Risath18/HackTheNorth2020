@@ -6,11 +6,36 @@
 //Samson Hua - The Random Mechanical Kid
 //Risat Haque - The UI God
 
-<div style="padding-left: 32px; padding-right: 32px; padding-top: 29px; padding-bottom: 29px; background-color: white; display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;">
-<div style="width: 100px; height: 100px; background-color: rgba(255, 0, 0, 1);"></div>
-<div style="height: 35px;"></div>
-<div style="width: 100px; height: 100px; background-color: rgba(0, 10.20, 255, 1);"></div>
-<div style="height: 35px;"></div>
-<div style="width: 100px; height: 100px; background-color: rgba(35.70, 255, 0, 1);"></div>
-<div style="height: 35px;"></div>
-<div style="width: 100px; height: 100px; background-color: rgba(255, 0, 0, 1);"></div></div>
+// Add bubble to the top of the page.
+document.documentElement.style.height = '100%';
+document.body.style.height = '100%';
+document.documentElement.style.width = '100%';
+document.body.style.width = '100%';
+
+var div = document.createElement( 'div' );
+var btnForm = document.createElement( 'form' );
+var btn = document.createElement( 'input' );
+
+//append all elements
+document.body.appendChild( div );
+div.appendChild( btnForm );
+btnForm.appendChild( btn );
+//set attributes for div
+div.id = 'myDivId';
+div.style.position = 'fixed';
+div.style.top = '50%';
+div.style.left = '50%';
+div.style.width = '100%';   
+div.style.height = '100%';
+div.style.backgroundColor = 'red';
+
+//set attributes for btnForm
+btnForm.action = '';
+
+//set attributes for btn
+//"btn.removeAttribute( 'style' );
+btn.type = 'button';
+btn.value = 'hello';
+btn.style.position = 'absolute';
+btn.style.top = '50%';
+btn.style.left = '50%';

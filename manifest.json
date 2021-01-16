@@ -11,6 +11,15 @@
     "browser_action":{
         "default_popup": "popup.html"
     },
+    "web_accessible_resources": [
+        "modal-iframe.html"
+    ],
+    "permissions":[
+        "contextMenus", 
+        "tabs",
+        "http://*/*",
+        "https://*/*"
+        ],
     "content_scripts": [
         {
             "matches": ["https://docs.google.com/presentation/*"],
@@ -18,6 +27,5 @@
             "all_frames": true
         }
     ],
-    "permissions": ["tabs"],
     "options_page": "options.html"
 }
