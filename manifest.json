@@ -17,6 +17,13 @@
             "js": ["content.js"]
         }
     ],
-    "permissions": ["tabs"],
-    "options_page": "options.html"
+    "permissions": ["tabs", "identity", "https://www.googleapis.com/*"],
+    "options_page": "options.html",
+    "oauth2": {
+        "client_id": "965980921214-ummd5lmg4tt8g4ovqah08hjucrdc576r.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/presentations",
+            "https://www.googleapis.com/auth/userinfo.email"
+        ]
+    }
 }
