@@ -9,14 +9,25 @@
         "128": "icon128.png"
     },
     "browser_action":{
-        "default_popup": "dashboard.html"
+        "default_popup": "popup.html"
     },
+    "web_accessible_resources": [
+        "modal-iframe.html", "logo128.png"
+    ],
+    "permissions":[
+        "contextMenus", 
+        "tabs",
+        "http://*/*",
+        "https://*/*"
+        ],
     "content_scripts": [
         {
-            "matches": ["<all_urls>"],
-            "js": ["content.js"]
+            "matches": ["http://motherfuckingwebsite.com/*"],
+            "js": ["content.js"],
+            "css": ["main.css"],
+            "images": ["icon128.png"],
+            "all_frames": true
         }
     ],
-    "permissions": ["tabs"],
     "options_page": "options.html"
 }
