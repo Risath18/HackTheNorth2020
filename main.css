@@ -60,29 +60,31 @@
   border-radius: 50%;
 }
 #scaffold img{
-    position: fixed;
+    position: absolute;
     transform: scale(0.2, 0.2);
-    top:300px;
-    left:300px;
+    top:0px;
+    left:0px;
     z-index: 100000;
   }
   #scaffold{
-    position: fixed;
-    top:300px;
-    left:300px;
+    position: absolute;
+    top:20%;
+    left:85%;
+    height:100%;
+    width: 40%;
     z-index: 100000;
   }
   #button img{
-    position: fixed;
+    position: absolute;
     transform: scale(0.2, 0.2);
-    top:300px;
-    left:300px;
+    top:0px;
+    left:0px;
     z-index: 100001;
   }
   #button{
-    position: fixed;
-    top:300px;
-    left:300px;
+    position: absolute;
+    top: 10%;
+    left: 85%;
     z-index: 100001;
   }
   #button:hover {
