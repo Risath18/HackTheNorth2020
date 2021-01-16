@@ -7,6 +7,8 @@
 //Risat Haque - The UI Person
 
 //Rip DOM how does it work!?!?!
+
+//Inject Green Scaffolding
 var div = document.createElement("DIV");
 div.id = "scaffold";
 var img = document.createElement("IMG");
@@ -14,6 +16,7 @@ img.src = "https://i.imgur.com/cc1Dm2s.png";
 div.appendChild(img);
 document.body.appendChild(div);
 
+//Inject Button
 var div2 = document.createElement("DIV");
 div2.id = "button";
 var img2 = document.createElement("IMG");

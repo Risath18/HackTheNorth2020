@@ -61,35 +61,30 @@
 }
 #scaffold img{
     position: fixed;
-    top: 30%;
-    left: 30%;
-    size: 10%;
+    transform: scale(0.2, 0.2);
+    top:300px;
+    left:300px;
     z-index: 100000;
   }
   #scaffold{
-    background-color: rgba(240,240,240,0);
-    width: 30%;
-    height: 30%;
-    position:fixed;
-    top:0;
-    left:0;
+    position: fixed;
+    top:300px;
+    left:300px;
     z-index: 100000;
   }
   #button img{
     position: fixed;
-    top: 30%;
-    left: 30%;
-    size: 10%;
+    transform: scale(0.2, 0.2);
+    top:300px;
+    left:300px;
     z-index: 100001;
-
   }
   #button{
-    background-color: rgba(240,240,240,0);
-    position:fixed;
-    top:30%;
-    left:30%;
+    position: fixed;
+    top:300px;
+    left:300px;
     z-index: 100001;
   }
   #button:hover {
-      background:black;
+      background-color:black;
    }
