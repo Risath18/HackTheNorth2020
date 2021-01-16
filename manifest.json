@@ -16,5 +16,7 @@
             "matches": ["<all_urls>"],
             "js": ["content.js"]
         }
-    ]
+    ],
+    "permissions": ["tabs"],
+    "options_page": "options.html"
 }
