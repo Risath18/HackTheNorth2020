@@ -8,22 +8,33 @@
         "48": "icon48.png",
         "128": "icon128.png"
     },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAg/67rfiI+xaXd6v+4W3EHzpiHKrPsPhsMZOeOHkpin9j70hdGS2ZK8qg8dYCmxyAsrlHYm05B1kFid3bqRPApYFecWNb45dGib6NrYOwmAygBJO8XlkqqxqTHsQ3320Mh17Dyd3c5dnPjX3TOSAt1xPw7FwQOILv89NZwjvnBf/lNjq4+pC1AdvqyINOs+cuWpL1Zft/d/JQKDxBXXmSoyneiJdWU7+v3mEvCvroP+WKMRsQ0SGHv0IQnGPbB4dfjgl1hRkSfBeJIuLJ5WvQoD+WJ1wRUIIrw/cBz2VXm+occy/CUq3wtFVZVzbeLjmU1yTnpNa3ZsMUlodJ6pjpsQIDAQAB",
     "browser_action":{
         "default_popup": "dashboard.html"
     },
+    "web_accessible_resources": [
+        "modal-iframe.html", "logo128.png"
+    ],
+    "permissions":[
+        "contextMenus", 
+        "tabs",
+        "http://*/*",
+        "https://*/*",
+        "identity"
+        ],
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
             "js": ["content.js"]
         }
     ],
-    "permissions": ["tabs", "identity", "https://www.googleapis.com/*"],
     "options_page": "options.html",
+    "background": {
+        "page": "background.html",
+        "persistent": false
+    },
     "oauth2": {
         "client_id": "965980921214-ummd5lmg4tt8g4ovqah08hjucrdc576r.apps.googleusercontent.com",
-        "scopes": [
-            "https://www.googleapis.com/auth/presentations",
-            "https://www.googleapis.com/auth/userinfo.email"
-        ]
+        "scopes": ["https://www.googleapis.com/auth/presentations"]
     }
 }

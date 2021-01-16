@@ -1,3 +1,3 @@
-chrome.browserAction.onClicked.addListener(function() {
-    chrome.tabs.create({url: 'index.html'});
-  });
+chrome.identity.getAuthToken({interactive: true}, function(token) {
+    console.log('got the token', token);
+  })
