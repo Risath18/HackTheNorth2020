@@ -75,7 +75,7 @@
     left: 89.1%;
   }
 
-  .UI-Button:hover{
+  .UI-Button:hover {
     transform: scale(0.18,0.18);
     position: fixed;
     z-index: 100001;
@@ -91,7 +91,7 @@
     left: 89.1%;
   }
 
-  .UI-Button1:hover{
+  .UI-Button1:hover {
     transform: scale(0.18,0.18);
     position: fixed;
     z-index: 100001;
@@ -106,7 +106,7 @@
     left: 89.1%;
   }
 
-  .UI-Button2:hover{
+  .UI-Button2:hover {
     transform: scale(0.18,0.18);
     position: fixed;
     z-index: 100001;
