@@ -6,11 +6,6 @@
 //Samson Hua - The Random Mechanical Kid
 //Risat Haque - The UI Person
 
-chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-  let link = document.createElement("a");
-  link.href = tabs[0].url;
-  console.log(link.href);
-});
 //Rip DOM how does it work!?!?!
 
 //Inject Green Scaffolding
