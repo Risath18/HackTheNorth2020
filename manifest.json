@@ -22,7 +22,7 @@
         ],
     "content_scripts": [
         {
-            "matches": ["http://motherfuckingwebsite.com/*"],
+            "matches": ["http://motherfuckingwebsite.com/*", "https://docs.google.com/presentation/*"],
             "js": ["content.js"],
             "css": ["main.css"],
             "images": ["icon128.png"],

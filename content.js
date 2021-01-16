@@ -6,11 +6,11 @@
 //Samson Hua - The Random Mechanical Kid
 //Risat Haque - The UI Person
 
-//Rip DOM how does it work!?!?!
+
 
 //Create stylesheet
 let stylesheet = document.createElement("style")
-stylesheet.innerHTML = ".extensionOverlayLayer {z-index: 10000000000; position: absolute; width: 100%; height: 100%; left: 0; top: 0;} .extensionContainer {background-color: white; opacity: 1; right: 0; bottom: 0;}";
+stylesheet.innerHTML = ".extensionOverlayLayer {z-index: 10000000000; position: absolute;  left: 0; top: 0;} .extensionContainer {background-color: white; opacity: 1; right: 0; bottom: 0;}";
 document.body.append(stylesheet)
 
 //Create ExtensionLayer
@@ -23,11 +23,17 @@ ScaffoldImage.src = 'https://i.imgur.com/eYJ2Ds7.png';
 ScaffoldImage.className = "UI-Image";
 overlayLayer.append(ScaffoldImage);
 
+//Create anchor
+let Anchor1 = document.createElement("A")
+Anchor1.outerHTML = '<a href="#" onMouseDown="return PlayButtonDown()" onMouseUp="return PlayButtonUp()"><img name="PlayButton" src="https://i.imgur.com/wgzcUv6.png"></a>';
+overlayLayer.append(Anchor1);
+
 //Create PlayButton
-let PlayButton = document.createElement("img");
-PlayButton.src = 'https://i.imgur.com/wgzcUv6.png';
-PlayButton.className = "UI-Button";
-overlayLayer.append(PlayButton);
+// let PlayButton = document.createElement("img");
+// PlayButton.src = 'https://i.imgur.com/wgzcUv6.png';
+// PlayButton.className = "UI-Button";
+// PlayButton.innerHTML = '<a href="#" onMouseDown="return PlayButtonDown()" onMouseUp="PlayButtonUp()"></a>';
+// Anchor1.append(PlayButton);
 
 //Create Wand
 let WandButton = document.createElement("img");
@@ -44,29 +50,20 @@ overlayLayer.append(ExclamationButton);
 //Append
 document.body.appendChild(overlayLayer);
 
-// //Create stylesheet
-// let stylesheet = document.createElement("style")
-// stylesheet.innerHTML = ".extensionOverlayLayer {z-index: 1000; pointer-events: none; position: absolute; width: 100%; height: 100%; left: 82.5%; top: 15% ;} .extensionContainer {width: 50px; height: 200px; background-color: white; opacity: 0; right: 0; top: 0;}";
-// document.body.append(stylesheet)
+//Functions
+function PlayButtonDown()
+{
+PlayButton.src = "https://i.imgur.com/nn5772h.png";
+console.log("Yeeet");
+return true;
+}
 
-// //Create overlayContainer
-// let overlayContainer = document.createElement("div");
-// overlayContainer.className = "extensionOverlayLayer";
+function PlayButtonUp()
+{
+PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
+console.log("Yeeet");
+return true;
+}
 
-// //Create Green Scaffold
-// let ScaffoldImage = document.createElement("img");
-// ScaffoldImage.src = 'https://i.imgur.com/eYJ2Ds7.png';
-// ScaffoldImage.className = "UI-Image";
-// overlayContainer.append(ScaffoldImage);
 
-// //Create PlayButton
-// let PlayButton = document.createElement("img");
-// PlayButton.src = 'https://i.imgur.com/wgzcUv6.png';
-// PlayButton.className = "UI-Scaffold";
-// overlayContainer.append(PlayButton);
 
-// //Create Container
-// let container = document.createElement("div");
-// container.className = "extensionContainer";
-// overlayContainer.appendChild(container);
-// document.body.appendChild(overlayContainer);
