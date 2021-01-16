@@ -23,3 +23,7 @@ var img2 = document.createElement("IMG");
 img2.src = "https://i.imgur.com/wgzcUv6.png";
 div2.appendChild(img2);
 document.body.appendChild(div2);
+
+//WPM Information
+var wpminfo = document.createElement("DIV");
+wpminfo.id = "wpm"

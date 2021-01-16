@@ -16,13 +16,21 @@ if (!('webkitSpeechRecognition' in window)) {
   // Could add an onerror or an on end thing but screw that for now 
 
   recognition.onresult = function(event) {
-    // Handle the results 
-    var interim_transcript = '';
+    static var lasttime = None;
+    var newString = "";
     for (var i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
-        // Search for key phrase and move to next slide
+        newString += event.results[i][0].transcript;
       }
     }
+    if (newString != ""){
+        var currenttime = new Date().getTime();
+        var words = newStirng.split().length();
+        wpm = words / (currenttime - lasttime) * 60;
+        console.log(wpm);
+        wpminfo.innerHTML = "<p> Wpm = " + wpm + "</p>"
+    }
+    
   };
 }
 
@@ -37,3 +45,7 @@ var first_char = /\S/;
 function capitalize(s) {
   return s.replace(first_char, function(m) { return m.toUpperCase(); });
 }
+
+
+// Don't have a button to start it yet
+recognition.start()
