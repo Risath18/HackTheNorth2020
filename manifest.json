@@ -36,5 +36,6 @@
     "oauth2": {
         "client_id": "965980921214-ummd5lmg4tt8g4ovqah08hjucrdc576r.apps.googleusercontent.com",
         "scopes": ["https://www.googleapis.com/auth/presentations"]
-    }
+    },
+    "content_security_policy": "script-src 'self' https://apis.google.com/; object-src 'self'"
 }
