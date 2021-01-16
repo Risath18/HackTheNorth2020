@@ -8,18 +8,70 @@
 
 //Rip DOM how does it work!?!?!
 
-//Inject Green Scaffolding
-var div = document.createElement("DIV");
-div.id = "scaffold";
-var img = document.createElement("IMG");
-img.src = "https://i.imgur.com/cc1Dm2s.png";
-div.appendChild(img);
-document.body.appendChild(div);
+//Create stylesheet
+let stylesheet = document.createElement("style")
+stylesheet.innerHTML = ".extensionOverlayLayer {z-index: 10000001; pointer-events: none; position: absolute; width: 100%; height: 100%; left: 0; top: 0;} .extensionContainer {background-color: white; opacity: 1; right: 0; bottom: 0;}";
+document.body.append(stylesheet)
 
-//Inject Button
-var div2 = document.createElement("DIV");
-div2.id = "button";
-var img2 = document.createElement("IMG");
-img2.src = "https://i.imgur.com/wgzcUv6.png";
-div2.appendChild(img2);
-document.body.appendChild(div2);
+//Create ExtensionLayer
+let overlayLayer = document.createElement("div");
+overlayLayer.className = "extensionOverlayLayer";
+
+//Create Container
+let container = document.createElement("div");
+container.className = "extensionContainer";
+
+//Create Green Scaffold
+let ScaffoldImage = document.createElement("img");
+ScaffoldImage.src = 'https://i.imgur.com/eYJ2Ds7.png';
+ScaffoldImage.className = "UI-Image";
+container.append(ScaffoldImage);
+
+//Create PlayButton
+let PlayButton = document.createElement("img");
+PlayButton.src = 'https://i.imgur.com/wgzcUv6.png';
+PlayButton.className = "UI-Button";
+container.append(PlayButton);
+
+//Create Wand
+let WandButton = document.createElement("img");
+WandButton.src = 'https://i.imgur.com/2Pgy76v.png';
+WandButton.className = "UI-Button1";
+container.append(WandButton);
+
+//Create Exclamation
+let ExclamationButton = document.createElement("img");
+ExclamationButton.src = 'https://i.imgur.com/nn5772h.png';
+ExclamationButton.className = "UI-Button2";
+container.append(ExclamationButton);
+
+//Append
+overlayLayer.appendChild(container);
+document.body.appendChild(overlayLayer);
+
+// //Create stylesheet
+// let stylesheet = document.createElement("style")
+// stylesheet.innerHTML = ".extensionOverlayLayer {z-index: 1000; pointer-events: none; position: absolute; width: 100%; height: 100%; left: 82.5%; top: 15% ;} .extensionContainer {width: 50px; height: 200px; background-color: white; opacity: 0; right: 0; top: 0;}";
+// document.body.append(stylesheet)
+
+// //Create overlayContainer
+// let overlayContainer = document.createElement("div");
+// overlayContainer.className = "extensionOverlayLayer";
+
+// //Create Green Scaffold
+// let ScaffoldImage = document.createElement("img");
+// ScaffoldImage.src = 'https://i.imgur.com/eYJ2Ds7.png';
+// ScaffoldImage.className = "UI-Image";
+// overlayContainer.append(ScaffoldImage);
+
+// //Create PlayButton
+// let PlayButton = document.createElement("img");
+// PlayButton.src = 'https://i.imgur.com/wgzcUv6.png';
+// PlayButton.className = "UI-Scaffold";
+// overlayContainer.append(PlayButton);
+
+// //Create Container
+// let container = document.createElement("div");
+// container.className = "extensionContainer";
+// overlayContainer.appendChild(container);
+// document.body.appendChild(overlayContainer);

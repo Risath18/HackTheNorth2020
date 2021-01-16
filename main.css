@@ -59,34 +59,60 @@
   left: 32px;
   border-radius: 50%;
 }
-#scaffold img{
-    position: absolute;
+  .UI-Image{
     transform: scale(0.2, 0.2);
-    top:0px;
-    left:0px;
     z-index: 100000;
-  }
-  #scaffold{
-    position: absolute;
-    top:20%;
-    left:85%;
-    height:100%;
-    width: 40%;
-    z-index: 100000;
-  }
-  #button img{
-    position: absolute;
-    transform: scale(0.2, 0.2);
-    top:0px;
-    left:0px;
-    z-index: 100001;
-  }
-  #button{
-    position: absolute;
-    top: 10%;
+    position: fixed;
+    top: 20%;
     left: 85%;
-    z-index: 100001;
   }
-  #button:hover {
-      background-color:black;
-   }
+
+  .UI-Button{
+    transform: scale(0.2,0.2);
+    position: fixed;
+    z-index: 100001;
+    top: 63%;
+    left: 89.1%;
+  }
+
+  .UI-Button:hover{
+    transform: scale(0.18,0.18);
+    position: fixed;
+    z-index: 100001;
+    top: 63%;
+    left: 89.1%;
+  }
+
+  .UI-Button1{
+    transform: scale(0.2,0.2);
+    position: fixed;
+    z-index: 100001;
+    top: 68%;
+    left: 89.1%;
+  }
+
+  .UI-Button1:hover{
+    transform: scale(0.18,0.18);
+    position: fixed;
+    z-index: 100001;
+    top: 68%;
+    left: 89.1%;
+  }
+  .UI-Button2{
+    transform: scale(0.2,0.2);
+    position: fixed;
+    z-index: 100001;
+    top: 73%;
+    left: 89.1%;
+  }
+
+  .UI-Button2:hover{
+    transform: scale(0.18,0.18);
+    position: fixed;
+    z-index: 100001;
+    top: 73%;
+    left: 89.1%;
+  }
+
+
+  
