@@ -31,7 +31,7 @@
     "options_page": "options.html",
     "background": {
         "page": "background.html",
-        "persistent": false
+        "persistent": true
     },
     "oauth2": {
         "client_id": "965980921214-ummd5lmg4tt8g4ovqah08hjucrdc576r.apps.googleusercontent.com",
