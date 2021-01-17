@@ -132,7 +132,7 @@ if (!('webkitSpeechRecognition' in window)) {
       var currenttime = Date.now();
       if (lasttime != NaN){
           var interimwpm = get_wpm(interimstring, lasttime);
-          interimwpm_info.innerHTML = "<p> Interim level wpm: "+interimwpm+"</p>"
+          interimwpm_info.innerHTML = "<p> Instantaneous wpm: "+interimwpm+"</p>"
           console.log(interimwpm); 
       }
       // If we weren't previously speaking start the timer
