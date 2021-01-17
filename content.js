@@ -24,8 +24,8 @@ ScaffoldImage.className = "UI-Image";
 overlayLayer.append(ScaffoldImage);
 
 //Create anchor
-let Anchor1 = document.createElement("A")
-Anchor1.outerHTML = '<a href="#" onMouseDown="return PlayButtonDown()" onMouseUp="return PlayButtonUp()"><img name="PlayButton" src="https://i.imgur.com/wgzcUv6.png"></a>';
+let Anchor1 = document.createElement("DIV")
+Anchor1.innerHTML = '<a href="http://samsoniskewl.com" onMouseDown="return PlayButtonDown()" onMouseUp="return PlayButtonUp()"><img name="PlayButton" src="https://i.imgur.com/wgzcUv6.png"></a>';
 overlayLayer.append(Anchor1);
 
 //Create PlayButton
