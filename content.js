@@ -35,8 +35,8 @@ Form.append(question);
 let input = document.createElement("input");
 input.setAttribute("type", "mText");
 input.id = "mText";
-// input.setAttribute("required", "");
-// input.required = true;
+input.setAttribute("required", "");
+input.required = true;
 question.append(input);
 
 let label = document.createElement("label");
@@ -131,6 +131,7 @@ var userIndicatedWord;
 function enterText() {
     userIndicatedWord = document.getElementById("mText").value;
     console.log(userIndicatedWord);
+    toggleInput();
 }
 //WPM Information
 var wpminfo = document.createElement("DIV");
