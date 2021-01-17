@@ -26,4 +26,63 @@ document.body.appendChild(div2);
 
 //WPM Information
 var wpminfo = document.createElement("DIV");
-wpminfo.id = "wpm"
+wpminfo.id = "wpminfo"
+document.body.appendChild(wpminfo);
+
+// Implements the listener and state handler
+
+if (!('webkitSpeechRecognition' in window)) {65
+  alert("Browser does not support the extension!");
+} else {
+  var recognition = new webkitSpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = false; // Unless we use this
+
+  recognition.onstart = function() {
+    // Add logic here to change the UI when we are recording
+    console.log("Starting");
+  };
+
+  // Could add an onerror or an on end thing but screw that for now 
+
+
+  recognition.onresult = function(event) {
+    // Keep track of last time we calculated wpm
+    lasttime = recognition.onresult.lasttime;
+
+    // Collect the new strings
+    var newString = "";
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        newString += event.results[i][0].transcript;
+      }
+    }
+    // Calculate wpm and publish
+    if (newString != ""){
+        var currenttime = Date.now();
+        if (lasttime != NaN){
+            var words = newString.trim().split(" ").length;
+            wpm = words / (currenttime - lasttime) * 60000; //convert ms to s
+            console.log(lasttime, currenttime, words, wpm, newString);
+            wpminfo.innerHTML = "<p> Wpm = " + wpm + "</p>"
+        }
+        recognition.onresult.lasttime = currenttime;
+    }
+    
+  };
+  recognition.onresult.lasttime = Date.now();
+}
+
+// Helper formatting functions
+var two_line = /\n\n/g;
+var one_line = /\n/g;
+function linebreak(s) {
+  return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+}
+
+var first_char = /\S/;
+function capitalize(s) {
+  return s.replace(first_char, function(m) { return m.toUpperCase(); });
+}
+
+recognition.start();
