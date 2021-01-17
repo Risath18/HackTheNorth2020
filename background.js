@@ -86,8 +86,9 @@ chrome.tabs.onUpdated.addListener(
       var urlInfo = changeInfo.url.split("/");
       console.log(urlInfo[5]);
       getPresData(urlInfo[5]);
-      //var slideInfo = urlInfo[6].split(".");
-      //console.log(slideInfo[1]);
+      // var slideInfo = urlInfo[6].split(".");
+      // getLastWord(urlInfo[5], slideInfo[1]);
+      // console.log(slideInfo[1]);
     }
   }
 );
@@ -126,12 +127,20 @@ function getWord(pId,sId) {
             pageElement.shape.text.textElements.forEach((textElement) => {
               if(textElement.textRun != undefined) {
                 textOnSlide.push(textElement.textRun.content.replace(/[^a-zA-Z ]/g, ""));
-                console.log(textElement.textRun.content.replace(/[^a-zA-Z ]/g, ""));
+                var tst = textElement.textRun.content.replace(/[^a-zA-Z ]/g, "").split(" ");
+                textOnSlide.push(tst[tst.length - 1]);
               }
             })
           }
         })
       }
     })
+    var lastWord = textOnSlide[textOnSlide.length - 1];
+    if(lastWord != null) {
+      console.log(lastWord.toLowerCase());
+    }
+    else {
+      console.log("next");
+    }
   })
 }
