@@ -192,7 +192,10 @@ if (!('webkitSpeechRecognition' in window)) {
           interimwpm_info.innerHTML = "<p> Instantaneous wpm: "+interimwpm+"</p>"
           console.log(interimwpm); 
 
-          checkWord(interimstring, userIndicatedWord); //CALLS FUNCTION TO CHECKWARD
+          console.log("Checking for " + slideid + " with " + interimstring);
+          chrome.storage.local.get([slideid], function(result){
+            checkWord(interimstring, result[slideid]); //CALLS FUNCTION TO CHECKWARD
+          });
 
       }
       // If we weren't previously speaking start the timer
@@ -225,6 +228,7 @@ if (!('webkitSpeechRecognition' in window)) {
 
 }
 
+var slideid = NaN;
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     // listen for messages sent from background.js
@@ -233,6 +237,7 @@ chrome.runtime.onMessage.addListener(
       console.log(urlInfo[5]);
       var slideInfo = urlInfo[6].split(".");
       console.log(slideInfo[1]);
+      slideid = slideInfo[1];
     } else if (request.message === "store"){
       var trigger = {};
       trigger[request.key] = request.value;

@@ -59,19 +59,26 @@ function getSlides(pId) {
       var id = slide.objectId;
       var trigger = "next";
 
-      // chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      //   chrome.tabs.sendMessage(tabs[0].id, {message:"store",key:id, value:trigger});
-      // });
+      var search_value = {};
+      search_value[id] = trigger
 
-      // chrome.runtime.sendMessage({key:id, value:trigger}, (response)=>{
-      //   console.log("Got response!");
-      // });
-      var storage_value = {};
-      storage_value[id] = trigger;
-      chrome.storage.local.set(
-        storage_value,
-        ()=>{console.log("Storing trigger " + trigger + " for " + slide.objectId)
+      chrome.storage.local.get(search_value, function(result){
+        var storage_value = {};
+        storage_value[id] = result[id];
+        chrome.storage.local.set(
+          storage_value,
+          ()=>{console.log("Storing trigger " + trigger + " for " + slide.objectId)
+        });
       });
+
+      // if(!(id in chrome.storage.local)){
+      //   var storage_value = {};
+      //   storage_value[id] = trigger;
+      //   chrome.storage.local.set(
+      //     storage_value,
+      //     ()=>{console.log("Storing trigger " + trigger + " for " + slide.objectId)
+      //   });
+      // }
     })
   })
 }
