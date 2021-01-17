@@ -125,14 +125,17 @@ function toggle(){
   }
 }
 
-//textbox selection from user to test condition
-var userIndicatedWord;
 
 function enterText() {
-    userIndicatedWord = document.getElementById("mText").value;
-    console.log(userIndicatedWord);
+    var userIndicatedWord = document.getElementById("mText").value;
+    var storage_value = {};
+    storage_value[slideid] = userIndicatedWord;
+    chrome.storage.local.set(storage_value, ()=>{
+      console.log("Set value for " + userIndicatedWord);
+    });
     toggleInput();
 }
+
 //WPM Information
 var wpminfo = document.createElement("DIV");
 var finalwpm_info = document.createElement("DIV");
