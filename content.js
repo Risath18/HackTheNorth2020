@@ -6,8 +6,6 @@
 //Samson Hua - The Random Mechanical Kid
 //Risat Haque - The UI Person
 
-
-
 //Create stylesheet
 let stylesheet = document.createElement("style")
 stylesheet.innerHTML = ".extensionOverlayLayer {z-index: 10000000000; position: absolute;  left: 0; top: 0;} .extensionContainer {background-color: white; opacity: 1; right: 0; bottom: 0;}";
@@ -25,7 +23,8 @@ overlayLayer.append(ScaffoldImage);
 
 //Create anchor
 let Anchor1 = document.createElement("DIV")
-Anchor1.innerHTML = '<a href="http://samsoniskewl.com" onMouseDown="return PlayButtonDown()" onMouseUp="return PlayButtonUp()"><img name="PlayButton" src="https://i.imgur.com/wgzcUv6.png"></a>';
+Anchor1.innerHTML = '<a href="#"><img name="PlayButton" class="UI-Button" src="https://i.imgur.com/wgzcUv6.png"></a>';
+Anchor1.onclick = PlayButtonDown;
 overlayLayer.append(Anchor1);
 
 //Create PlayButton
@@ -49,6 +48,7 @@ overlayLayer.append(ExclamationButton);
 
 //Append
 document.body.appendChild(overlayLayer);
+
 
 //Functions
 function PlayButtonDown()
