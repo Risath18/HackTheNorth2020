@@ -90,7 +90,7 @@ function toggleInput(){
     }
 }
 
-var toggled = false;
+var toggled = true;
 function toggle(){
   if(!toggled){
     console.log("Streamline Flowing");
