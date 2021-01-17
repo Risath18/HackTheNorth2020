@@ -19,25 +19,41 @@ overlayLayer.className = "extensionOverlayLayer";
 let container = document.createElement("div");
 container.className = "extensionContainer";
 
+//Create Input Container
+let InputContainer = document.createElement("div");
+InputContainer.className = "InputContainer";
+InputContainer.style.display = "none";
+
+//Create form
+let Form = document.createElement("form");
+InputContainer.append(Form);
+
+let question = document.createElement("div");
+question.className = "question";
+Form.append(question);
+
+let input = document.createElement("input");
+input.setAttribute("type", "mText");
+input.id = "mText";
+input.setAttribute("required", "");
+input.required = true;
+question.append(input);
+
+let label = document.createElement("label");
+label.textContent = "Enter your Transition Queue";
+question.append(label);
+
+let InputButton = document.createElement("button");
+InputButton.textContent = "Submit"
+InputButton.setAttribute("type", "button");
+InputButton.onclick = enterText;
+question.append(InputButton);
+
 //Create Green Scaffold
 let ScaffoldImage = document.createElement("img");
 ScaffoldImage.src = 'https://i.imgur.com/eYJ2Ds7.png';
 ScaffoldImage.className = "UI-Image";
 container.append(ScaffoldImage);
-
-//Create White Scaffold
-let InputScaffold = document.createElement('img');
-InputScaffold.src = "https://i.imgur.com/KFhpOYc.png";
-InputScaffold.className = "UI-Input";
-InputScaffold.style.display = "none";
-container.append(InputScaffold);
-
-//Create Input Field
-let Input = document.createElement("INPUT");
-Input.className = "UI-InputField";
-Input.setAttribute("type", "text");
-Input.setAttribute("value", "Enter your Transition Word");
-container.append(Input);
 
 //Create anchor
 let Anchor1 = document.createElement("DIV")
@@ -62,6 +78,7 @@ container.append(Anchor3);
 // Anchor3.className = "UI-Image1";
 
 //Append
+container.appendChild(InputContainer);
 overlayLayer.appendChild(container);
 document.body.appendChild(overlayLayer);
 
@@ -78,42 +95,44 @@ function toggleInput(){
     if(!toggledInput){
         toggledInput = true;
         WandButton.src = "https://i.imgur.com/OKabhTu.png";
-        InputScaffold.style.display = "block";
+        InputContainer.style.display = "block";
         return;
     }
     if(toggledInput){
         console.log("Streamline Blocked");
         toggledInput = false;
         WandButton.src = "https://i.imgur.com/2Pgy76v.png";
-        InputScaffold.style.display = "none";
+        InputContainer.style.display = "none";
         return;
     }
 }
 
-var toggled = true;
+var toggled = false;
 function toggle(){
   if(!toggled){
     console.log("Streamline Flowing");
     recognition.start();
     toggled = true;
-    PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
+    PlayButton.src = "https://i.imgur.com/2oHUXe1.png";
     return;
   }
   if(toggled){
     console.log("Streamline Blocked");
     recognition.stop();
     toggled = false;
-    PlayButton.src = "https://i.imgur.com/2oHUXe1.png";
+    PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
     return;
   }
 }
 
 //textbox selection from user to test condition
 var userIndicatedWord;
-function enterText() {
-    userIndicatedWord = document.getElementById("myText").value;
-}
 
+function enterText() {
+    userIndicatedWord = document.getElementById("mText").value;
+    console.log(userIndicatedWord);
+    toggleInput();
+}
 //WPM Information
 var wpminfo = document.createElement("DIV");
 var finalwpm_info = document.createElement("DIV");
