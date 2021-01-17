@@ -78,7 +78,11 @@ function toggle(){
 
 //WPM Information
 var wpminfo = document.createElement("DIV");
+var finalwpm_info = document.createElement("DIV");
+var interimwpm_info = document.createElement("DIV");
 wpminfo.id = "wpminfo"
+wpminfo.appendChild(interimwpm_info);
+wpminfo.appendChild(finalwpm_info);
 document.body.appendChild(wpminfo);
 
 // Implements the listener and state handler
@@ -87,7 +91,7 @@ if (!('webkitSpeechRecognition' in window)) {
 } else {
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
-  recognition.interimResults = false; // Unless we use this
+  recognition.interimResults = true; // Unless we use this
 
   recognition.onstart = function() {
     // Add logic here to change the UI when we are recording
@@ -97,28 +101,58 @@ if (!('webkitSpeechRecognition' in window)) {
   // Could add an onerror or an on end thing but screw that for now 
 
   recognition.onresult = function(event) {
-    // Keep track of last time we calculated wpm
-    lasttime = recognition.onresult.lasttime;
+    // Use local copies cuz these names are long af
+    var lasttime = recognition.onresult.lasttime;
+    var speaking = recognition.onresult.speaking;
 
     // Collect the new strings
-    var newString = "";
+    var finalstring = "";
+    var interimstring = "";
     for (var i = event.resultIndex; i < event.results.length; ++i) {
+      var phrase = event.results[i][0].transcript;
       if (event.results[i].isFinal) {
-        newString += event.results[i][0].transcript;
+        finalstring += phrase;
+      } else {
+        interimstring += phrase;
       }
     }
-    // Calculate wpm and publish
-    if (newString != ""){
-        var currenttime = Date.now();
+
+    if (finalstring != ""){
+        // Calculate wpm for the last confirmed section
         if (lasttime != NaN){
-            var words = newString.trim().split(" ").length;
-            wpm = words / (currenttime - lasttime) * 60000; //convert ms to min
-            console.log(lasttime, currenttime, words, wpm, newString);
-            wpminfo.innerHTML = "<p> Wpm = " + wpm + "</p>"
+            var finalwpm = get_wpm(finalstring, lasttime);
+            finalwpm_info.innerHTML = "<p> Paragraph level wpm: "+finalwpm+"</p>";
+            console.log(finalwpm);
         }
-        recognition.onresult.lasttime = currenttime;
+        speaking = false;
     }
-    
+
+    if (interimstring != "") {
+      // Tentaveily calculate wpm
+      var currenttime = Date.now();
+      if (lasttime != NaN){
+          var interimwpm = get_wpm(interimstring, lasttime);
+          interimwpm_info.innerHTML = "<p> Interim level wpm: "+interimwpm+"</p>"
+          console.log(interimwpm); 
+      }
+      // If we weren't previously speaking start the timer
+      if (!speaking){
+        speaking = true;
+        lasttime = Date.now();
+      }
+    }
+
+    recognition.onresult.lasttime = lasttime;
+    recognition.onresult.speaking = speaking;    
   };
-  recognition.onresult.lasttime = Date.now();
+  recognition.onresult.lasttime = NaN;
+  recognition.onresult.speaking = false;
+  // Helper function for wpm calcaultions
+  function get_wpm(string, lasttime){
+    var currenttime = Date.now();
+    var words = string.trim().split(" ").length;
+    var wpm = words / (currenttime - lasttime) * 60000; //convert ms to mins
+    return wpm
+  }
+
 }
