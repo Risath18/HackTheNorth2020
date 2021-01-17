@@ -76,6 +76,12 @@ function toggle(){
   }
 }
 
+//textbox selection from user to test condition
+var userIndicatedWord;
+function enterText() {
+    userIndicatedWord = document.getElementById("myText").value;
+}
+
 //WPM Information
 var wpminfo = document.createElement("DIV");
 var finalwpm_info = document.createElement("DIV");
@@ -134,6 +140,9 @@ if (!('webkitSpeechRecognition' in window)) {
           var interimwpm = get_wpm(interimstring, lasttime);
           interimwpm_info.innerHTML = "<p> Instantaneous wpm: "+interimwpm+"</p>"
           console.log(interimwpm); 
+
+          checkWord(interimstring, userIndicatedWord); //CALLS FUNCTION TO CHECKWARD
+
       }
       // If we weren't previously speaking start the timer
       if (!speaking){
@@ -154,5 +163,13 @@ if (!('webkitSpeechRecognition' in window)) {
     var wpm = words / (currenttime - lasttime) * 60000; //convert ms to mins
     return wpm
   }
+
+  function checkWord(saidWord, userIndicatedWord){
+    //checking if it contains current word
+  if (saidWord.includes(userIndicatedWord)){
+      alert("Transitioning to Next Slide");
+  }
+
+}
 
 }
