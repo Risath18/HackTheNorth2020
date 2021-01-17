@@ -56,6 +56,20 @@ function getSlides(pId) {
   }).then(function (response) {
     response.result.slides.forEach((slide) => {
       console.log(slide.objectId);
+      var id = slide.objectId;
+      var trigger = "next";
+
+      var search_value = {};
+      search_value[id] = trigger
+
+      chrome.storage.local.get(search_value, function(result){
+        var storage_value = {};
+        storage_value[id] = result[id];
+        chrome.storage.local.set(
+          storage_value,
+          ()=>{console.log("Storing trigger " + trigger + " for " + slide.objectId)
+        });
+      });
     })
   })
 }

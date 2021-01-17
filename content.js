@@ -125,14 +125,17 @@ function toggle(){
   }
 }
 
-//textbox selection from user to test condition
-var userIndicatedWord;
 
 function enterText() {
-    userIndicatedWord = document.getElementById("mText").value;
-    console.log(userIndicatedWord);
+    var userIndicatedWord = document.getElementById("mText").value;
+    var storage_value = {};
+    storage_value[slideid] = userIndicatedWord;
+    chrome.storage.local.set(storage_value, ()=>{
+      console.log("Set value for " + userIndicatedWord);
+    });
     toggleInput();
 }
+
 //WPM Information
 var wpminfo = document.createElement("DIV");
 var finalwpm_info = document.createElement("DIV");
@@ -192,7 +195,10 @@ if (!('webkitSpeechRecognition' in window)) {
           interimwpm_info.innerHTML = "<p> Instantaneous wpm: "+interimwpm+"</p>"
           console.log(interimwpm); 
 
-          checkWord(interimstring, userIndicatedWord); //CALLS FUNCTION TO CHECKWARD
+          console.log("Checking for " + slideid + " with " + interimstring);
+          chrome.storage.local.get([slideid], function(result){
+            checkWord(interimstring, result[slideid]); //CALLS FUNCTION TO CHECKWARD
+          });
 
       }
       // If we weren't previously speaking start the timer
@@ -225,6 +231,7 @@ if (!('webkitSpeechRecognition' in window)) {
 
 }
 
+var slideid = NaN;
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     // listen for messages sent from background.js
@@ -233,5 +240,12 @@ chrome.runtime.onMessage.addListener(
       console.log(urlInfo[5]);
       var slideInfo = urlInfo[6].split(".");
       console.log(slideInfo[1]);
+      slideid = slideInfo[1];
+    } else if (request.message === "store"){
+      var trigger = {};
+      trigger[request.key] = request.value;
+      chrome.storage.sync.set(trigger, ()=>{
+        console.log("Stored trigger " + request.value + " for " + request.key);
+      })
     }
 });
