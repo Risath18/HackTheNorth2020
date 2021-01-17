@@ -62,7 +62,7 @@ if (!('webkitSpeechRecognition' in window)) {
         var currenttime = Date.now();
         if (lasttime != NaN){
             var words = newString.trim().split(" ").length;
-            wpm = words / (currenttime - lasttime) * 60000; //convert ms to s
+            wpm = words / (currenttime - lasttime) * 60000; //convert ms to min
             console.log(lasttime, currenttime, words, wpm, newString);
             wpminfo.innerHTML = "<p> Wpm = " + wpm + "</p>"
         }
