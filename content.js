@@ -24,7 +24,7 @@ overlayLayer.append(ScaffoldImage);
 //Create anchor
 let Anchor1 = document.createElement("DIV")
 Anchor1.innerHTML = '<a href="#"><img name="PlayButton" class="UI-Button" src="https://i.imgur.com/wgzcUv6.png"></a>';
-Anchor1.onclick = PlayButtonDown;
+Anchor1.onclick = toggle;
 overlayLayer.append(Anchor1);
 
 //Create Wand
@@ -58,13 +58,103 @@ console.log("Yeeet");
 return true;
 }
 
+// var final_transcript = "";
+// var interim_transcript = "";
+
+// var toggled = true;
+//       function toggle(){
+//         if(!toggled){
+            
+//           console.log("Streamline Disabled");
+//           button(toggled);
+//           toggled = true;
+//           PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
+//           return;
+//         }
+//         if(toggled){
+//           console.log("Streamline Enabled");
+//           button(toggled);
+//           toggled = false;
+//           PlayButton.src = "https://i.imgur.com/2oHUXe1.png";
+//           return;
+//         }
+//       }
+
+// function button(toggled){
+//     //START HERE
+
+//         if (!('webkitSpeechRecognition' in window)) {
+//       // alert("Lol ur browser sucks")
+//     } else {
+//       var recognition = new webkitSpeechRecognition(); //new recognition class
+//       recognition.continuous = true;
+//       recognition.interimResults = true;
+      
+//         recognition.onstart = function() {
+//       }
+
+
+//       recognition.onresult = function(event) {
+//         var interim_transcript = '';
+//         for (var i = event.resultIndex; i < event.results.length; ++i) {
+//           if (event.results[i].isFinal) {
+//             final_transcript += event.results[i][0].transcript;
+//             console.log("Final"+event.results[i][0].transcript)
+//           } else {
+//             interim_transcript += event.results[i][0].transcript;
+//             console.log("Interim:"+event.results[i][0].transcript)
+//           }
+//         }
+//         final_transcript = capitalize(final_transcript);
+//         final_span.innerHTML = linebreak(final_transcript);
+//         interim_span.innerHTML = linebreak(interim_transcript);
+
+//         var two_line = /\n\n/g;
+//         var one_line = /\n/g;
+//         function linebreak(s) {
+//           return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+//         }
+
+//         var first_char = /\S/;
+//         function capitalize(s) {
+//           return s.replace(first_char, function(m) { return m.toUpperCase(); });
+//         }
+
+//       };
+//     }
+    
+//     recognition.start(); //starts
+//     if(toggled === false){ //if false, stops
+//       recognition.stop();
+//     }
+//     return;
+//   }
+
+var toggled = true;
+      function toggle(){
+        if(!toggled){
+          console.log("Streamline Flowing");
+          button(toggled);
+          toggled = true;
+          PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
+          return;
+        }
+        if(toggled){
+          console.log("Streamline Blocked");
+          button(toggled);
+          toggled = false;
+          PlayButton.src = "https://i.imgur.com/2oHUXe1.png";
+          return;
+        }
+      }
+
 //WPM Information
 var wpminfo = document.createElement("DIV");
 wpminfo.id = "wpminfo"
 document.body.appendChild(wpminfo);
 
 // Implements the listener and state handler
-
+function button(toggled){
 if (!('webkitSpeechRecognition' in window)) {
   alert("Browser does not support the extension!");
 } else {
@@ -74,11 +164,10 @@ if (!('webkitSpeechRecognition' in window)) {
 
   recognition.onstart = function() {
     // Add logic here to change the UI when we are recording
-    console.log("Starting");
+    console.log("Streamline Starting...");
   };
 
   // Could add an onerror or an on end thing but screw that for now 
-
 
   recognition.onresult = function(event) {
     // Keep track of last time we calculated wpm
@@ -107,4 +196,9 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onresult.lasttime = Date.now();
 }
 
-recognition.start();
+recognition.start(); //starts
+    if(toggled === false){ //if false, stops
+      recognition.stop();
+    }
+    return;
+}
