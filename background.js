@@ -70,15 +70,6 @@ function getSlides(pId) {
           ()=>{console.log("Storing trigger " + trigger + " for " + slide.objectId)
         });
       });
-
-      // if(!(id in chrome.storage.local)){
-      //   var storage_value = {};
-      //   storage_value[id] = trigger;
-      //   chrome.storage.local.set(
-      //     storage_value,
-      //     ()=>{console.log("Storing trigger " + trigger + " for " + slide.objectId)
-      //   });
-      // }
     })
   })
 }
