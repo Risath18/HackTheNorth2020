@@ -32,17 +32,49 @@ InfoContainer.style.display = "none";
 //Create Head
 let Head = document.createElement("head");
 InfoContainer.append(Head);
-
+//Create Title
 let Title = document.createElement("title");
 Title.text = "Document";
 Head.append(Title); 
-
+//Create Body
 let Body = document.createElement("body");
 InfoContainer.append(Body);
 
 let BodyDiv = document.createElement("div");
 BodyDiv.className = "v70_0";
+//Header 1
+let Header1 = document.createElement("H1");
+let StreamlineNode = document.createTextNode("Streamline");
+StreamlineNode.className = "Streamline"
+Header1.appendChild(StreamlineNode);
+BodyDiv.append(Header1);
+//Header 2
+let Header2 = document.createElement("H1");
+let StreamlineNode2 = document.createTextNode("Streamline is here for you! Speak away, and present hands-free.");
+StreamlineNode2.className = "Streamline2"
+Header2.appendChild(StreamlineNode2);
+BodyDiv.append(Header2);
+//Header 3
+let Header3 = document.createElement("H1");
+let StreamlineNode3 = document.createTextNode("sline.tech");
+StreamlineNode3.className = "Streamline3"
+Header3.appendChild(StreamlineNode3);
+BodyDiv.append(Header3);
+//Header 4
+let Header4 = document.createElement("H1");
+let StreamlineNode4 = document.createTextNode("Words Per Minute");
+StreamlineNode4.className = "Streamline4"
+Header4.appendChild(StreamlineNode4);
+BodyDiv.append(Header4);
+//Header 5
+let Header5 = document.createElement("H1");
+let StreamlineNode5 = document.createTextNode("0");
+StreamlineNode5.className = "Streamline5"
+Header5.appendChild(StreamlineNode5);
+BodyDiv.append(Header5);
 
+
+//Append BodyDiv
 Body.append(BodyDiv);
 
 //Create form
@@ -103,13 +135,6 @@ container.appendChild(InfoContainer);
 container.appendChild(InputContainer);
 overlayLayer.appendChild(container);
 document.body.appendChild(overlayLayer);
-
-//Table creation
-let InputTable = document.createElement("table");
-InputTable.style.width = "100%";
-InputTable.style.border = '1px solid black';
-
-overlayLayer.append(InputTable);
 
 var toggledInput = false;
 
@@ -195,6 +220,10 @@ wpminfo.appendChild(interimwpm_info);
 wpminfo.appendChild(finalwpm_info);
 document.body.appendChild(wpminfo);
 
+wpminfo.style.display = "none";
+finalwpm_info.style.display = "none";
+interimwpm_info.style.display = "none";
+
 // Implements the listener and state handler
 if (!('webkitSpeechRecognition' in window)) {
   alert("Browser does not support the extension!");
@@ -231,7 +260,8 @@ if (!('webkitSpeechRecognition' in window)) {
         // Calculate wpm for the last confirmed section
         if (lasttime != NaN){
             var finalwpm = get_wpm(finalstring, lasttime);
-            finalwpm_info.innerHTML = "<p> Paragraph level wpm: "+finalwpm+"</p>";
+            finalwpm = Math.round(finalwpm);
+            StreamlineNode5.nodeValue = finalwpm.toString();
             console.log(finalwpm);
         }
         speaking = false;
