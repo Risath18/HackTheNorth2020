@@ -81,7 +81,7 @@ function toggleInput(){
         InputScaffold.style.display = "block";
         return;
     }
-    if(toggled){
+    if(toggledInput){
         console.log("Streamline Blocked");
         toggledInput = false;
         WandButton.src = "https://i.imgur.com/2Pgy76v.png";
