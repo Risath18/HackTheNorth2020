@@ -20,7 +20,8 @@
         "tabs",
         "http://*/*",
         "https://*/*",
-        "identity"
+        "identity",
+        "storage"
         ],
     "content_scripts": [
         {

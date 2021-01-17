@@ -56,6 +56,22 @@ function getSlides(pId) {
   }).then(function (response) {
     response.result.slides.forEach((slide) => {
       console.log(slide.objectId);
+      var id = slide.objectId;
+      var trigger = "next";
+
+      // chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      //   chrome.tabs.sendMessage(tabs[0].id, {message:"store",key:id, value:trigger});
+      // });
+
+      // chrome.runtime.sendMessage({key:id, value:trigger}, (response)=>{
+      //   console.log("Got response!");
+      // });
+      var storage_value = {};
+      storage_value[id] = trigger;
+      chrome.storage.local.set(
+        storage_value,
+        ()=>{console.log("Storing trigger " + trigger + " for " + slide.objectId)
+      });
     })
   })
 }

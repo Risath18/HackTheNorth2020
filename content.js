@@ -233,5 +233,12 @@ chrome.runtime.onMessage.addListener(
       console.log(urlInfo[5]);
       var slideInfo = urlInfo[6].split(".");
       console.log(slideInfo[1]);
+    } else if (request.message === "store"){
+      var trigger = {};
+      trigger[request.key] = request.value;
+      chrome.storage.sync.set(trigger, ()=>{
+        console.log("Stored trigger " + request.value + " for " + request.key);
+      })
+      // sendResponse();
     }
 });
