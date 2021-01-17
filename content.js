@@ -31,7 +31,7 @@ document.body.appendChild(wpminfo);
 
 // Implements the listener and state handler
 
-if (!('webkitSpeechRecognition' in window)) {65
+if (!('webkitSpeechRecognition' in window)) {
   alert("Browser does not support the extension!");
 } else {
   var recognition = new webkitSpeechRecognition();
