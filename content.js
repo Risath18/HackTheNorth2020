@@ -244,6 +244,5 @@ chrome.runtime.onMessage.addListener(
       chrome.storage.sync.set(trigger, ()=>{
         console.log("Stored trigger " + request.value + " for " + request.key);
       })
-      // sendResponse();
     }
 });
