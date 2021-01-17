@@ -24,7 +24,7 @@ overlayLayer.append(ScaffoldImage);
 //Create anchor
 let Anchor1 = document.createElement("DIV")
 Anchor1.innerHTML = '<a href="#"><img name="PlayButton" class="UI-Button" src="https://i.imgur.com/wgzcUv6.png"></a>';
-Anchor1.onclick = PlayButtonDown;
+Anchor1.onclick = toggle;
 overlayLayer.append(Anchor1);
 
 //Create Wand
@@ -58,13 +58,31 @@ console.log("Yeeet");
 return true;
 }
 
+var toggled = true;
+      function toggle(){
+        if(!toggled){
+          console.log("Streamline Flowing");
+          button(toggled);
+          toggled = true;
+          PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
+          return;
+        }
+        if(toggled){
+          console.log("Streamline Blocked");
+          button(toggled);
+          toggled = false;
+          PlayButton.src = "https://i.imgur.com/2oHUXe1.png";
+          return;
+        }
+      }
+
 //WPM Information
 var wpminfo = document.createElement("DIV");
 wpminfo.id = "wpminfo"
 document.body.appendChild(wpminfo);
 
 // Implements the listener and state handler
-
+function button(toggled){
 if (!('webkitSpeechRecognition' in window)) {
   alert("Browser does not support the extension!");
 } else {
@@ -74,11 +92,10 @@ if (!('webkitSpeechRecognition' in window)) {
 
   recognition.onstart = function() {
     // Add logic here to change the UI when we are recording
-    console.log("Starting");
+    console.log("Streamline Starting...");
   };
 
   // Could add an onerror or an on end thing but screw that for now 
-
 
   recognition.onresult = function(event) {
     // Keep track of last time we calculated wpm
@@ -107,4 +124,9 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onresult.lasttime = Date.now();
 }
 
-recognition.start();
+recognition.start(); //starts
+    if(toggled === false){ //if false, stops
+      recognition.stop();
+    }
+    return;
+}
