@@ -156,3 +156,14 @@ if (!('webkitSpeechRecognition' in window)) {
   }
 
 }
+
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    // listen for messages sent from background.js
+    if (request.message === 'urlChange') {
+      var urlInfo = request.url.split("/");
+      console.log(urlInfo[5]);
+      var slideInfo = urlInfo[6].split(".");
+      console.log(slideInfo[1]);
+    }
+});
