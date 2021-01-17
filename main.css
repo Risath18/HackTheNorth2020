@@ -116,6 +116,16 @@
 .UI-Button2:hover {
   transform:scale(0.97);
 }
+
+.UI-Input{
+  z-index: 100001;
+  position: absolute;
+  height: 100px;
+  right: 100%;
+  top: 25%;
+}
+
+
 #button:hover {
   background-color: black;
 }
@@ -124,7 +134,7 @@
   position: fixed;
   width: 72px;
   top: 30%;
-  left: 92%;
+  left: 94%;
   margin: auto;
 }
 

@@ -25,6 +25,20 @@ ScaffoldImage.src = 'https://i.imgur.com/eYJ2Ds7.png';
 ScaffoldImage.className = "UI-Image";
 container.append(ScaffoldImage);
 
+//Create White Scaffold
+let InputScaffold = document.createElement('img');
+InputScaffold.src = "https://i.imgur.com/KFhpOYc.png";
+InputScaffold.className = "UI-Input";
+InputScaffold.style.display = "none";
+container.append(InputScaffold);
+
+//Create Input Field
+let Input = document.createElement("INPUT");
+Input.className = "UI-InputField";
+Input.setAttribute("type", "text");
+Input.setAttribute("value", "Enter your Transition Word");
+container.append(Input);
+
 //Create anchor
 let Anchor1 = document.createElement("DIV")
 Anchor1.innerHTML = '<a href="#"><img name="PlayButton" class="UI-Button" src="https://i.imgur.com/wgzcUv6.png"></a>';
@@ -35,7 +49,7 @@ container.append(Anchor1);
 //Create Wand
 let Anchor2 = document.createElement("DIV")
 Anchor2.innerHTML = '<a href="#"><img name="WandButton" class="UI-Button1" src="https://i.imgur.com/2Pgy76v.png"></a>';
-Anchor2.onclick = console.log("test!");
+Anchor2.onclick = toggleInput;
 // Anchor2.className = "UI-Image1";
 container.append(Anchor2);
 
@@ -58,24 +72,44 @@ InputTable.style.border = '1px solid black';
 
 overlayLayer.append(InputTable);
 
+var toggledInput = false;
+
+function toggleInput(){
+    if(!toggledInput){
+        toggledInput = true;
+        WandButton.src = "https://i.imgur.com/OKabhTu.png";
+        InputScaffold.style.display = "block";
+        return;
+    }
+    if(toggled){
+        console.log("Streamline Blocked");
+        toggledInput = false;
+        WandButton.src = "https://i.imgur.com/2Pgy76v.png";
+        InputScaffold.style.display = "none";
+        return;
+    }
+}
+
+
 
 var toggled = true;
-      function toggle(){
-        if(!toggled){
-          console.log("Streamline Flowing");
-          button(toggled);
-          toggled = true;
-          PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
-          return;
-        }
-        if(toggled){
-          console.log("Streamline Blocked");
-          button(toggled);
-          toggled = false;
-          PlayButton.src = "https://i.imgur.com/2oHUXe1.png";
-          return;
-        }
-      }
+
+function toggle(){
+if(!toggled){
+    console.log("Streamline Flowing");
+    button(toggled);
+    toggled = true;
+    PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
+    return;
+}
+if(toggled){
+    console.log("Streamline Blocked");
+    button(toggled);
+    toggled = false;
+    PlayButton.src = "https://i.imgur.com/2oHUXe1.png";
+    return;
+}
+}
 
 //WPM Information
 var wpminfo = document.createElement("DIV");
