@@ -58,23 +58,23 @@ console.log("Yeeet");
 return true;
 }
 
-var toggled = true;
-      function toggle(){
-        if(!toggled){
-          console.log("Streamline Flowing");
-          button(toggled);
-          toggled = true;
-          PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
-          return;
-        }
-        if(toggled){
-          console.log("Streamline Blocked");
-          button(toggled);
-          toggled = false;
-          PlayButton.src = "https://i.imgur.com/2oHUXe1.png";
-          return;
-        }
-      }
+var toggled = false;
+function toggle(){
+  if(!toggled){
+    console.log("Streamline Flowing");
+    recognition.start();
+    toggled = true;
+    PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
+    return;
+  }
+  if(toggled){
+    console.log("Streamline Blocked");
+    recognition.stop();
+    toggled = false;
+    PlayButton.src = "https://i.imgur.com/2oHUXe1.png";
+    return;
+  }
+}
 
 //WPM Information
 var wpminfo = document.createElement("DIV");
@@ -82,7 +82,6 @@ wpminfo.id = "wpminfo"
 document.body.appendChild(wpminfo);
 
 // Implements the listener and state handler
-function button(toggled){
 if (!('webkitSpeechRecognition' in window)) {
   alert("Browser does not support the extension!");
 } else {
@@ -122,11 +121,4 @@ if (!('webkitSpeechRecognition' in window)) {
     
   };
   recognition.onresult.lasttime = Date.now();
-}
-
-recognition.start(); //starts
-    if(toggled === false){ //if false, stops
-      recognition.stop();
-    }
-    return;
 }
