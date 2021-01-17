@@ -77,3 +77,47 @@ chrome.tabs.onUpdated.addListener(
     }
   }
 );
+
+function getLastWord(pId, sId) {
+  var wordElements;
+  gapi.client.slides.presentations.get({
+    presentationId: pId,
+    pageObjectId: sId,
+  }).then(function (response) {
+    response.pageElements.forEach((pageElement) => {
+      if(pageElement.shape != undefined &&
+        pageElement.shape.shapeType === "TEXT_BOX") {
+          pageElement.shape.text.textElements.forEach((element) => {
+            if(element.textRun != undefined &&
+              element.textRun.content != " " &&
+              element.textRun.content != "") {
+                wordElements.push(element.textRun.content);
+            }
+          })
+        }
+    })
+  })
+  console.log(wordElements);
+}
+
+function getWord(pId,sId) {
+  let textOnSlide = new Array;
+  gapi.client.slides.presentations.get({
+    presentationId: pId,
+  }).then(function (response) {
+    response.result.slides.forEach((slide) => {
+      if(slide.objectId === sId) {
+        slide.pageElements.forEach((pageElement) => {
+          if(pageElement.shape != undefined && pageElement.shape.shapeType === "TEXT_BOX") {
+            pageElement.shape.text.textElements.forEach((textElement) => {
+              if(textElement.textRun != undefined) {
+                textOnSlide.push(textElement.textRun.content.replace(/[^a-zA-Z ]/g, ""));
+                console.log(textElement.textRun.content.replace(/[^a-zA-Z ]/g, ""));
+              }
+            })
+          }
+        })
+      }
+    })
+  })
+}
