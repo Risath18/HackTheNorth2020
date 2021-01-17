@@ -76,6 +76,13 @@ var toggled = true;
         }
       }
 
+
+//Entering in userindicated word for TextBox Feature
+var userIndicatedWord;
+function enterText() {
+    userIndicatedWord = document.getElementById("myText").value;
+}
+
 //WPM Information
 var wpminfo = document.createElement("DIV");
 wpminfo.id = "wpminfo"
@@ -119,14 +126,48 @@ if (!('webkitSpeechRecognition' in window)) {
         }
         recognition.onresult.lasttime = currenttime;
     }
+<<<<<<< Updated upstream
     
+=======
+
+    if (interimstring != "") {
+      // Tentaveily calculate wpm
+      var currenttime = Date.now();
+      if (lasttime != NaN){
+          var interimwpm = get_wpm(interimstring, lasttime);
+          interimwpm_info.innerHTML = "<p> Instantaneous wpm: "+interimwpm+"</p>"
+          console.log(interimwpm); 
+          //NEW
+          checkWord(interimstring, userIndicatedWord); //CALLS FUNCTION TO CHECKWARD
+
+      }
+      // If we weren't previously speaking start the timer
+      if (!speaking){
+        speaking = true;
+        lasttime = Date.now();
+      }
+    }
+
+    recognition.onresult.lasttime = lasttime;
+    recognition.onresult.speaking = speaking;    
+>>>>>>> Stashed changes
   };
   recognition.onresult.lasttime = Date.now();
 }
 
+<<<<<<< Updated upstream
 recognition.start(); //starts
     if(toggled === false){ //if false, stops
       recognition.stop();
     }
     return;
+=======
+  function checkWord(saidWord, userIndicatedWord){
+        //checking if it contains current word
+    if (saidWord.includes(userIndicatedWord)){
+        alert("Transitioning to Next Slide");
+    }
+  }
+
+>>>>>>> Stashed changes
 }
