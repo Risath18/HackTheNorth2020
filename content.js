@@ -8,55 +8,56 @@
 
 //Create stylesheet
 let stylesheet = document.createElement("style")
-stylesheet.innerHTML = ".extensionOverlayLayer {z-index: 10000000000; position: absolute;  left: 0; top: 0;} .extensionContainer {background-color: white; opacity: 1; right: 0; bottom: 0;}";
-document.body.append(stylesheet)
+stylesheet.innerHTML = ".extensionOverlayLayer {z-index: 10000000000; position: absolute;  left: 0; top: 0;}";
+document.body.append(stylesheet);
 
 //Create ExtensionLayer
 let overlayLayer = document.createElement("div");
 overlayLayer.className = "extensionOverlayLayer";
 
+//Create Container
+let container = document.createElement("div");
+container.className = "extensionContainer";
+
 //Create Green Scaffold
 let ScaffoldImage = document.createElement("img");
 ScaffoldImage.src = 'https://i.imgur.com/eYJ2Ds7.png';
 ScaffoldImage.className = "UI-Image";
-overlayLayer.append(ScaffoldImage);
+container.append(ScaffoldImage);
 
 //Create anchor
 let Anchor1 = document.createElement("DIV")
 Anchor1.innerHTML = '<a href="#"><img name="PlayButton" class="UI-Button" src="https://i.imgur.com/wgzcUv6.png"></a>';
 Anchor1.onclick = toggle;
-overlayLayer.append(Anchor1);
+// Anchor1.className = "UI-Image";
+container.append(Anchor1);
 
 //Create Wand
-let WandButton = document.createElement("img");
-WandButton.src = 'https://i.imgur.com/2Pgy76v.png';
-WandButton.className = "UI-Button1";
-overlayLayer.append(WandButton);
+let Anchor2 = document.createElement("DIV")
+Anchor2.innerHTML = '<a href="#"><img name="WandButton" class="UI-Button1" src="https://i.imgur.com/2Pgy76v.png"></a>';
+Anchor2.onclick = console.log("test!");
+// Anchor2.className = "UI-Image1";
+container.append(Anchor2);
+
 
 //Create Exclamation
-let ExclamationButton = document.createElement("img");
-ExclamationButton.src = 'https://i.imgur.com/nn5772h.png';
-ExclamationButton.className = "UI-Button2";
-overlayLayer.append(ExclamationButton);
+let Anchor3 = document.createElement("DIV")
+Anchor3.innerHTML = '<a href="#"><img name="ExclamationButton" class="UI-Button2" src="https://i.imgur.com/nn5772h.png"></a>';
+Anchor3.onclick = console.log("test!");
+container.append(Anchor3);
+// Anchor3.className = "UI-Image1";
 
 //Append
+overlayLayer.appendChild(container);
 document.body.appendChild(overlayLayer);
 
+//Table creation
+let InputTable = document.createElement("table");
+InputTable.style.width = "100%";
+InputTable.style.border = '1px solid black';
 
-//Functions
-function PlayButtonDown()
-{
-PlayButton.src = "https://i.imgur.com/nn5772h.png";
-console.log("Yeeet");
-return true;
-}
+overlayLayer.append(InputTable);
 
-function PlayButtonUp()
-{
-PlayButton.src = "https://i.imgur.com/wgzcUv6.png";
-console.log("Yeeet");
-return true;
-}
 
 var toggled = true;
       function toggle(){
