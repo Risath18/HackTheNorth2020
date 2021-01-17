@@ -1,12 +1,9 @@
 * {
-  overflow-x: hidden;
-  padding: 0px !important;
-  margin: 0px !important;
 }
 .v35_21 {
   width: 164px;
   height: 299px;
-  background: rgba(255,255,255,1);
+  background: rgba(255, 255, 255, 1);
   padding: 29px 32px;
   margin: 35px;
   opacity: 1;
@@ -22,7 +19,7 @@
 .v35_22 {
   width: 100px;
   height: 100px;
-  background: rgba(255,0,0,1);
+  background: rgba(255, 0, 0, 1);
   opacity: 1;
   position: absolute;
   top: 29px;
@@ -32,7 +29,7 @@
 .v35_23 {
   width: 100px;
   height: 100px;
-  background: rgba(0,10,255,1);
+  background: rgba(0, 10, 255, 1);
   opacity: 1;
   position: absolute;
   top: 164px;
@@ -42,7 +39,7 @@
 .v35_24 {
   width: 100px;
   height: 100px;
-  background: rgba(35,255,0,1);
+  background: rgba(35, 255, 0, 1);
   opacity: 1;
   position: absolute;
   top: 299px;
@@ -52,48 +49,79 @@
 .v35_25 {
   width: 100px;
   height: 100px;
-  background: rgba(255,0,0,1);
+  background: rgba(255, 0, 0, 1);
   opacity: 1;
   position: absolute;
   top: 434px;
   left: 32px;
   border-radius: 50%;
 }
-#scaffold img{
-    position: fixed;
-    transform: scale(0.2, 0.2);
-    top:300px;
-    left:300px;
-    z-index: 100000;
-  }
-  #scaffold{
-    position: fixed;
-    top:300px;
-    left:300px;
-    z-index: 100000;
-  }
-  #button img{
-    position: fixed;
-    transform: scale(0.2, 0.2);
-    top:300px;
-    left:300px;
-    z-index: 100001;
-  }
-  #button{
-    position: fixed;
-    top:300px;
-    left:300px;
-    z-index: 100001;
-  }
-  #button:hover {
-      background-color:black;
-   }
+.UI-Image {
+  transform: scale(0.2, 0.2);
+  z-index: 100000;
+  position: fixed;
+  top: 20%;
+  left: 85%;
+}
+
+.UI-Image:hover {
+}
+
+.UI-Button {
+  transform: scale(0.2, 0.2);
+  position: fixed;
+  z-index: 100001;
+  top: 63%;
+  left: 89.1%;
+}
+
+.UI-Button:hover {
+  transform: scale(0.18, 0.18);
+  position: fixed;
+  z-index: 100001;
+  top: 63%;
+  left: 89.1%;
+}
+
+.UI-Button1 {
+  transform: scale(0.2, 0.2);
+  position: fixed;
+  z-index: 100001;
+  top: 68%;
+  left: 89.1%;
+}
+
+.UI-Button1:hover {
+  transform: scale(0.18, 0.18);
+  position: fixed;
+  z-index: 100001;
+  top: 68%;
+  left: 89.1%;
+}
+.UI-Button2 {
+  transform: scale(0.2, 0.2);
+  position: fixed;
+  z-index: 100001;
+  top: 73%;
+  left: 89.1%;
+}
+
+.UI-Button2:hover {
+  transform: scale(0.18, 0.18);
+  position: fixed;
+  z-index: 100001;
+  top: 73%;
+  left: 89.1%;
+}
+#button:hover {
+  background-color: black;
+}
 
 #wpminfo {
-  position : fixed;
+  position: fixed;
   background-color: rgb(19, 118, 206);
   opacity: 0.5;
-  width : 100%;
-  height : 10%;
+  width: 100%;
+  height: 10%;
   top: 90%;
 }
