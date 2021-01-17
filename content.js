@@ -91,7 +91,7 @@ if (!('webkitSpeechRecognition' in window)) {
 } else {
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
-  recognition.interimResults = true; // Unless we use this
+  recognition.interimResults = true;
 
   recognition.onstart = function() {
     // Add logic here to change the UI when we are recording
