@@ -8,6 +8,8 @@ Given the transition to working and learning from home.
 
 *Streamline* was designed to make delivering presentations easer for the presenter and more meaningful for the audience. Our product makes presenting hands-free using voice recognition technology.
 
+[![](http://img.youtube.com/vi/e6bP4bH4x30/0.jpg)](http://www.youtube.com/watch?v=e6bP4bH4x30 "Streamline")
+
 ## Challenges we ran into
 
 One of the most significant challenges that our team ran into were the organization of code. This was our first experience collaborating on code in practically real time. In some cases this mean that in order for the next person to work on their feature commits would have to be made without reviewing. As a result not all code used the same style of syntax. Combines with some missing documentation this made merging and finding issues difficult at times.
