@@ -24,6 +24,27 @@ let InputContainer = document.createElement("div");
 InputContainer.className = "InputContainer";
 InputContainer.style.display = "none";
 
+//Create Info Container
+let InfoContainer = document.createElement("div");
+InfoContainer.className = "InfoContainer";
+InfoContainer.style.display = "none";
+
+//Create Head
+let Head = document.createElement("head");
+InfoContainer.append(Head);
+
+let Title = document.createElement("title");
+Title.text = "Document";
+Head.append(Title); 
+
+let Body = document.createElement("body");
+InfoContainer.append(Body);
+
+let BodyDiv = document.createElement("div");
+BodyDiv.className = "v70_0";
+
+Body.append(BodyDiv);
+
 //Create form
 let Form = document.createElement("form");
 InputContainer.append(Form);
@@ -73,11 +94,12 @@ container.append(Anchor2);
 //Create Exclamation
 let Anchor3 = document.createElement("DIV")
 Anchor3.innerHTML = '<a href="#"><img name="ExclamationButton" class="UI-Button2" src="https://i.imgur.com/nn5772h.png"></a>';
-Anchor3.onclick = console.log("test!");
+Anchor3.onclick = toggleInfo;
 container.append(Anchor3);
 // Anchor3.className = "UI-Image1";
 
 //Append
+container.appendChild(InfoContainer);
 container.appendChild(InputContainer);
 overlayLayer.appendChild(container);
 document.body.appendChild(overlayLayer);
@@ -93,6 +115,11 @@ var toggledInput = false;
 
 function toggleInput(){
     if(!toggledInput){
+
+        if(toggledInfo){
+            toggleInfo();
+        }
+
         toggledInput = true;
         WandButton.src = "https://i.imgur.com/OKabhTu.png";
         InputContainer.style.display = "block";
@@ -103,6 +130,29 @@ function toggleInput(){
         toggledInput = false;
         WandButton.src = "https://i.imgur.com/2Pgy76v.png";
         InputContainer.style.display = "none";
+        return;
+    }
+}
+
+var toggledInfo = false;
+
+function toggleInfo(){
+    if(!toggledInfo){
+
+        if(toggledInput){
+            toggleInput();
+        }
+
+        toggledInfo = true;
+        ExclamationButton.src = "https://i.imgur.com/iyYtnnM.png";
+        InfoContainer.style.display = "block";
+        return;
+        
+    }
+    if(toggledInfo){
+        toggledInfo = false;
+        ExclamationButton.src = "https://i.imgur.com/nn5772h.png";
+        InfoContainer.style.display = "none";
         return;
     }
 }
