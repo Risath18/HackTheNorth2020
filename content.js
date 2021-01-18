@@ -304,14 +304,15 @@ if (!('webkitSpeechRecognition' in window)) {
   function checkWord(saidWord, userIndicatedWord){
     //checking if it contains current word
   if (saidWord.includes(userIndicatedWord)){
-      alert("Transitioning to Next Slide");
+    document.getElementsByClassName("punch-viewer-content")[0].click();
+      // alert("Transitioning to Next Slide");
   }
 
 }
 
 }
 
-var slideid = NaN;
+var slideid = "p";
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     // listen for messages sent from background.js
